@@ -8,7 +8,8 @@ import (
 )
 
 func StartWebChat() {
-	bot := openwechat.DefaultBot(openwechat.Desktop)
+	//bot := openwechat.DefaultBot(openwechat.Desktop)
+	bot := openwechat.DefaultBot()
 	bot.MessageHandler = wechat.Handler
 	bot.UUIDCallback = openwechat.PrintlnQrcodeUrl
 
