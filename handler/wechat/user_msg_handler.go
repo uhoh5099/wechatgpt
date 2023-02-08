@@ -55,6 +55,9 @@ func (g *UserMessageHandler) ReplyText(msg *openwechat.Message) error {
 	//if err != nil {
 	//	log.Printf("response user error: %v \n", err)
 	//}
+	if msg.IsSendBySelf() {
+		msg.FromUserName = msg.ToUserName
+	}
 
 	wechat := config.GetWechatKeyword()
 	requestText := msg.Content
