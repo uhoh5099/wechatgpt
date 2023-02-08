@@ -32,6 +32,10 @@ func (gmh *GroupMessageHandler) ReplyText(msg *openwechat.Message) error {
 	group := openwechat.Group{User: sender}
 	log.Printf("Received Group %v Text Msg : %v", group.NickName, msg.Content)
 
+	if msg.IsSendBySelf() {
+		msg.FromUserName = msg.ToUserName
+	}
+
 	wechat := config.GetWechatKeyword()
 	requestText := msg.Content
 	if wechat != nil {
